@@ -17,7 +17,26 @@
             }
             Console.WriteLine();
             Console.Write(motATrouver[0]);
-            Console.ReadLine();
+            string proposition = (Console.ReadLine() ?? string.Empty).ToLowerInvariant();
+
+            while (proposition.Length != motATrouver.Length || proposition[0] != motATrouver[0])
+            {
+                if (proposition.Length != motATrouver.Length &&
+                    (proposition.Length == 0 || proposition[0] != motATrouver[0]))
+                {
+                    Console.WriteLine($"Le mot doit commencer par {motATrouver[0]} et faire {motATrouver.Length} lettres.");
+                }
+                else if (proposition.Length != motATrouver.Length)
+                {
+                    Console.WriteLine($"Le mot doit faire {motATrouver.Length} lettres !");
+                }
+                else
+                {
+                    Console.WriteLine($"Le mot doit commencer par {motATrouver[0]}.");
+                }
+
+                proposition = (Console.ReadLine() ?? string.Empty).ToLowerInvariant();
+            }
         }
     }
 }
